@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taschenrechner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="historyArea" id="calHistory"></div>
+    <div class="resultArea" id="calculationArea"></div>
+    <table>
+        <tr>
+            <td colspan="2" class="empty"></td>
+            <td class="delete button" onclick="deleteLastCharacter()">DEL</td>
+            <td class="delete button" onclick="clearResult()">C</td>
+        </tr>
+        <tr>
+            <td class="button" onclick="appendOperation('7')">7</td>
+            <td class="button" onclick="appendOperation('8')">8</td>
+            <td class="button" onclick="appendOperation('9')">9</td>
+            <td class="highlight" onclick="appendOperation('/')">/</td>
+        </tr>
+        <tr>
+            <td class="button" onclick="appendOperation('4')">4</td>
+            <td class="button" onclick="appendOperation('5')">5</td>
+            <td class="button" onclick="appendOperation('6')">6</td>
+            <td class="highlight" onclick="appendOperation('*')">x</td>
+        </tr>
+        <tr>
+            <td class="button" onclick="appendOperation('1')">1</td>
+            <td class="button" onclick="appendOperation('2')">2</td>
+            <td class="button" onclick="appendOperation('3')">3</td>
+            <td class="highlight" onclick="appendOperation('-')">-</td>
+        </tr>
+        <tr>
+            <td class="button" onclick="appendOperation('0')">0</td>
+            <td class="highlight" onclick="appendOperation(',')">,</td>
+            <td id="result" class="highlight result" onclick="calculateResult()">=</td>
+            <td class="highlight" onclick="appendOperation('+')">+</td>
+        </tr>
+    </table>
+    <script type="module" src="/calculator.js"></script>
+</body>
+</html>
