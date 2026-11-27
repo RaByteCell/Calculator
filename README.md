@@ -35,13 +35,6 @@ Calculator/
 
 ## Installation
 
-Repository klonen:
-
-```bash
-git clone https://github.com/RaByteCell/Calculator.git
-cd Calculator
-```
-
 Abhängigkeiten installieren:
 
 ```bash
