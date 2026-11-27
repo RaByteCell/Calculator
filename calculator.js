@@ -7,6 +7,7 @@ let calculated = false;
 function appendOperation(operation) {
     const area = document.getElementById("calculationArea");
     const history = document.getElementById("calHistory");
+    // Wenn bereits eine Berechnung durchgeführt wurde, den Bereich zurücksetzen
 
     if (calculated) {
         if (!"+-*/".includes(operation) || area.textContent === "Fehler") {
@@ -15,7 +16,7 @@ function appendOperation(operation) {
         history.textContent = "";
         calculated = false;
     }
-
+    // Wenn der Bereich leer ist und der Benutzer einen Operator eingibt, wird die Eingabe ignoriert
     area.textContent += operation;
     history.textContent = area.textContent;
 }
@@ -27,24 +28,25 @@ function calculateResult() {
 
     const rawString = area.textContent;
     const mathString = rawString.replaceAll(",", ".");
-
+    // Wenn der Bereich leer ist, wird die Berechnung nicht durchgeführt
     if (mathString.trim() === "") {
         return;
     }
-
+    // Berechnung durchführen und Ergebnis anzeigen
     try {
         const result = evaluate(mathString);
-
+        // Überprüfen, ob das Ergebnis eine gültige Zahl ist
         if (typeof result !== "number" || !isFinite(result)) {
             throw new Error("Ungültige Berechnung");
         }
-
+        // Ergebnis formatieren und anzeigen
         area.textContent = result.toString().replace(".", ",");
         history.textContent = rawString + " =";
+    // Fehlerbehandlung, falls die Berechnung fehlschlägt
     } catch (error) {
         area.textContent = "Fehler";
     }
-
+    // Berechnung abgeschlossen, Flag setzen
     calculated = true;
 }
 
@@ -52,14 +54,14 @@ function calculateResult() {
 function deleteLastCharacter() {
     const area = document.getElementById("calculationArea");
     const history = document.getElementById("calHistory");
-
+    // Wenn bereits eine Berechnung durchgeführt wurde, den Bereich zurücksetzen
     if (calculated) {
         area.textContent = "";
         history.textContent = "";
         calculated = false;
         return;
     }
-
+    // Letztes Zeichen löschen und den Verlauf aktualisieren
     area.textContent = area.textContent.slice(0, -1);
     history.textContent = area.textContent;
 }
